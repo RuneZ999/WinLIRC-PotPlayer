@@ -76,10 +76,4 @@ return ; <-- end of function
 ```
 
 Function diagram:
-
-```mermaid
-graph TD
-A[IR Serial Reciver]  --serial port--> B[WinLIRC]
-B --TCP/IP--> C[WinLirc_SM_Player.ahk]
-C --keyboard emulation--> D[SMPlayer]
-```
+![Diagram](DiagramPot.PNG)
