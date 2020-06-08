@@ -76,4 +76,6 @@ return ; <-- end of function
 ```
 
 Function diagram:
+
 ![Diagram](DiagramPot.PNG)
+
