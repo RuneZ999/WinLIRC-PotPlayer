@@ -1,4 +1,4 @@
-﻿# WinLIRC Remote Control Scripts
+﻿# WinLIRC Remote Control Script
 
 
 
