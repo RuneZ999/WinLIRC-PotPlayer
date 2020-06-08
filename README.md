@@ -76,11 +76,43 @@ return ; <-- end of function
 ```
 
 Function diagram:
+<div class="mermaid">graph TD
+A[IR Serial Reciver]  --serial port--&gt; B[WinLIRC]
+B --TCP/IP--&gt; C[WinLirc_SM_Player.ahk]
+C --keyboard emulation--&gt; D[SMPlayer]
+</div>
+      </div>
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
 
-
-```mermaid
-graph TD
-A[IR Serial Reciver]  --serial port--> B[WinLIRC]
-B --TCP/IP--> C[WinLirc_Pot_Player.ahk]
-C --keyboard emulation--> D[PotPlayer]
-```
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
