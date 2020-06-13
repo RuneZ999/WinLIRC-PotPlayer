@@ -1,5 +1,6 @@
 ﻿# WinLIRC Remote Control Script
 
+By Neumann Gregor
 
 
 # WinLIRC Client
